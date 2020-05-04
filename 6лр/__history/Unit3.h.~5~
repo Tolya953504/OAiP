@@ -1,0 +1,39 @@
+//---------------------------------------------------------------------------
+#pragma once
+#include <vcl.h>
+#ifndef Unit3H
+#define Unit3H
+#include "Unit2.h"
+//---------------------------------------------------------------------------
+#endif
+struct node // структура для представления узлов дерева
+{
+	int key;
+	AnsiString str;
+	unsigned char height;
+	node* left;
+	node* right;
+	node(int k, AnsiString str1) { key = k; left = right = 0; height = 1; str = str1;}
+};
+class Tree
+{
+	public:
+	node* root;
+	void Output1q(node* root,TTreeNode *item);
+	void Free(node *&root);
+	void treeprintInf(node* root);  //Инфиксная форма
+	void treeprintPost(node *tree);  //Постинфиксная форма
+	void treeprintPre(node *tree); //Преинфиксная форма
+	unsigned char height(node* p);
+	int bfactor(node* p);
+	void fixheight(node* p);
+	node* rotateright(node* p); // правый поворот вокруг p
+	node* rotateleft(node* q); // левый поворот вокруг q
+	node* insert(node* p, int k, AnsiString str); // вставка ключа k в дерево с корнем p
+	node* findmin(node* p); // поиск узла с минимальным ключом в дереве p
+	node* removemin(node* p); // удаление узла с минимальным ключом из дерева p
+	node* remove(node* p, int k); // удаление ключа k из дерева p
+	node* balance(node* p); // балансировка узла p
+};
+
+
